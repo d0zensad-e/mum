@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Скачать приложение</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg-primary: #0a0a0a;
+            --bg-secondary: #141414;
+            --bg-tertiary: #1e1e1e;
+            --text-primary: #e0e0e0;
+            --text-secondary: #a0a0a0;
+            --accent-color: #2d7d5f;
+            --accent-hover: #3a9d76;
+            --border-color: #2a2a2a;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        /* Header Section */
+        .hero-section {
+            text-align: center;
+            padding: 60px 20px;
+            background-color: var(--bg-secondary);
+            border-radius: 12px;
+            margin-bottom: 40px;
+            border: 1px solid var(--border-color);
+        }
+
+        .logo-container {
+            margin-bottom: 30px;
+        }
+
+        .logo {
+            width: 140px;
+            height: 140px;
+            object-fit: contain;
+            filter: drop-shadow(0 6px 16px rgba(45, 125, 95, 0.35));
+        }
+
+        .title {
+            font-size: 2.5rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 15px;
+            letter-spacing: -0.5px;
+        }
+
+        .subtitle {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Download Section */
+        .download-section {
+            background-color: var(--bg-secondary);
+            padding: 40px;
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+            margin-bottom: 30px;
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 25px;
+            color: var(--text-primary);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .section-title::before {
+            content: '';
+            width: 4px;
+            height: 24px;
+            background-color: var(--accent-color);
+            border-radius: 2px;
+        }
+
+        .download-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .download-card {
+            background-color: var(--bg-tertiary);
+            padding: 24px;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            text-decoration: none;
+            display: block;
+        }
+
+        .download-card:hover {
+            border-color: var(--accent-color);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 16px rgba(45, 125, 95, 0.15);
+        }
+
+        .file-icon {
+            width: 48px;
+            height: 48px;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: var(--bg-secondary);
+            border-radius: 6px;
+            font-weight: 700;
+            font-size: 0.85rem;
+            color: var(--accent-color);
+            border: 1px solid var(--border-color);
+        }
+
+        .file-name {
+            font-size: 1rem;
+            font-weight: 500;
+            color: var(--text-primary);
+            margin-bottom: 8px;
+        }
+
+        .file-type {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* GitHub Section */
+        .github-section {
+            background-color: var(--bg-secondary);
+            padding: 30px 40px;
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .github-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            color: var(--text-primary);
+            text-decoration: none;
+            font-size: 1.05rem;
+            padding: 12px 24px;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .github-link:hover {
+            border-color: var(--accent-color);
+            color: var(--accent-color);
+            background-color: rgba(45, 125, 95, 0.05);
+        }
+
+        .github-icon {
+            font-size: 1.5rem;
+        }
+
+        /* Contact Section */
+        .contact-section {
+            background-color: var(--bg-secondary);
+            padding: 35px 40px;
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+            text-align: center;
+        }
+
+        .contact-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: var(--text-primary);
+        }
+
+        .contact-text {
+            color: var(--text-secondary);
+            margin-bottom: 20px;
+            font-size: 0.95rem;
+        }
+
+        .email-link {
+            display: inline-block;
+            color: var(--accent-color);
+            text-decoration: none;
+            font-size: 1.1rem;
+            font-weight: 500;
+            padding: 10px 20px;
+            border: 1px solid var(--accent-color);
+            border-radius: 6px;
+            transition: all 0.3s ease;
+        }
+
+        .email-link:hover {
+            background-color: rgba(45, 125, 95, 0.1);
+            transform: translateY(-1px);
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 30px 20px;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            margin-top: 40px;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .title {
+                font-size: 2rem;
+            }
+
+            .download-section,
+            .contact-section,
+            .github-section {
+                padding: 25px 20px;
+            }
+
+            .hero-section {
+                padding: 40px 20px;
+            }
+
+            .logo {
+                width: 120px;
+                height: 120px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Hero Section -->
+        <section class="hero-section">
+            <div class="logo-container">
+                <img src="https://z-cdn-media.chatglm.cn/files/b3912c5e-1c35-4bf7-8cfb-6b193878bcd7.png?auth_key=1878095346-78cf76d068ca45a3b2569307ecde92ab-0-2749dd253573fe9f5b9516526c8ebe12" alt="Logo" class="logo">
+            </div>
+            <h1 class="title">Приложение</h1>
+            <p class="subtitle">Скачайте последнюю версию приложения для вашей операционной системы</p>
+        </section>
+
+        <!-- Download Section -->
+        <section class="download-section">
+            <h2 class="section-title">Файлы для скачивания</h2>
+            
+            <div class="download-grid">
+                <!-- EXE File -->
+                <a href="#" class="download-card" onclick="alert('Скачивание файла начнётся скоро')">
+                    <div class="file-icon">EXE</div>
+                    <div class="file-name">Установщик</div>
+                    <div class="file-type">Исполняемый файл</div>
+                </a>
+
+                <!-- ZIP Files -->
+                <a href="#" class="download-card" onclick="alert('Скачивание файла начнётся скоро')">
+                    <div class="file-icon">ZIP</div>
+                    <div class="file-name">Архив 1</div>
+                    <div class="file-type">ZIP архив</div>
+                </a>
+
+                <a href="#" class="download-card" onclick="alert('Скачивание файла начнётся скоро')">
+                    <div class="file-icon">ZIP</div>
+                    <div class="file-name">Архив 2</div>
+                    <div class="file-type">ZIP архив</div>
+                </a>
+
+                <a href="#" class="download-card" onclick="alert('Скачивание файла начнётся скоро')">
+                    <div class="file-icon">ZIP</div>
+                    <div class="file-name">Архив 3</div>
+                    <div class="file-type">ZIP архив</div>
+                </a>
+
+                <a href="#" class="download-card" onclick="alert('Скачивание файла начнётся скоро')">
+                    <div class="file-icon">ZIP</div>
+                    <div class="file-name">Архив 4</div>
+                    <div class="file-type">ZIP архив</div>
+                </a>
+            </div>
+        </section>
+
+        <!-- GitHub Section -->
+        <section class="github-section">
+            <h2 class="section-title" style="justify-content: center;">Исходный код</h2>
+            <p style="color: var(--text-secondary); margin-bottom: 20px;">Посмотреть исходный код на GitHub</p>
+            <a href="https://github.com/" target="_blank" rel="noopener noreferrer" class="github-link">
+                <span class="github-icon">&#9741;</span>
+                Открыть репозиторий
+            </a>
+        </section>
+
+        <!-- Contact Section -->
+        <section class="contact-section">
+            <h2 class="contact-title">Нужна помощь?</h2>
+            <p class="contact-text">Если у вас возникли вопросы или вам нужна дополнительная информация, свяжитесь с нами по электронной почте</p>
+            <a href="mailto:pittip512@yandex.ru" class="email-link">pittip512@yandex.ru</a>
+        </section>
+
+        <!-- Footer -->
+        <footer>
+            <p>&copy; 2024 Все права защищены</p>
+        </footer>
+    </div>
+</body>
+</html>
